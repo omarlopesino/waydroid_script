@@ -20,7 +20,7 @@ class Nodataperm(General):
         "13": {}
     }
     dl_file_name = "nodataperm.zip"
-    extract_to = "/tmp/nodataperm"
+    extract_to = "/home/deck/tmp/nodataperm"
     dl_link = ...
     act_md5 = ...
     partition = "system"

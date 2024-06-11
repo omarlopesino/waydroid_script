@@ -12,7 +12,7 @@ class Ndk(General):
         "13": ["https://github.com/supremegamers/vendor_google_proprietary_ndk_translation-prebuilt/archive/a090003c60df53a9eadb2df09bd4fd2fa86ea629.zip", "e6f0d9fc28ebc427b59a3942a9a4ffc0"]
     }
     dl_file_name = "libndktranslation.zip"
-    extract_to = "/tmp/libndkunpack"
+    extract_to = "/home/deck/tmp/libndkunpack"
     apply_props = {
         "ro.product.cpu.abilist": "x86_64,x86,armeabi-v7a,armeabi,arm64-v8a",
         "ro.product.cpu.abilist32": "x86,armeabi-v7a,armeabi",

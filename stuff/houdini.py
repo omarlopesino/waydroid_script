@@ -15,7 +15,7 @@ class Houdini(General):
     act_md5 = ...
     dl_link = ...
     dl_file_name = "libhoudini.zip"
-    extract_to = "/tmp/houdiniunpack"
+    extract_to = "/home/deck/tmp/houdiniunpack"
     init_rc_component = """
 on early-init
     mount binfmt_misc binfmt_misc /proc/sys/fs/binfmt_misc

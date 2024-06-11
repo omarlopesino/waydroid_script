@@ -23,7 +23,7 @@ class Widevine(General):
         }
     }
     dl_file_name = "widevine.zip"
-    extract_to = "/tmp/widevineunpack"
+    extract_to = "/home/deck/tmp/widevineunpack"
     files = [
         "bin/hw/*widevine",
         "bin/move_widevine_data.sh",

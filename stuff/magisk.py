@@ -12,7 +12,7 @@ class Magisk(General):
     partition = "system"
     dl_link = "https://github.com/mistrmochov/magiskdeltaorig/raw/main/app-release.apk"
     dl_file_name = "magisk.apk"
-    extract_to = "/tmp/magisk_unpack"
+    extract_to = "/home/deck/tmp/magisk_unpack"
     magisk_dir = os.path.join(partition, "etc", "init", "magisk")
     files = ["etc/init/magisk", "etc/init/bootanim.rc"]
     oringinal_bootanim = """
@@ -24,7 +24,7 @@ service bootanim /system/bin/bootanimation
     oneshot
     ioprio rt 0
     task_profiles MaxPerformance
-    
+
 """
     bootanim_component = f"""
 on post-fs-data
@@ -45,10 +45,10 @@ on property:vold.decrypt=trigger_restart_framework
 on property:sys.boot_completed=1
     mkdir /data/adb/magisk 755
     exec u:r:su:s0 root root -- /dev/magisk_iqeoVo2mDrO/magisk --auto-selinux --boot-complete
-   
+
 on property:init.svc.zygote=restarting
     exec u:r:su:s0 root root -- /dev/magisk_iqeoVo2mDrO/magisk --auto-selinux --zygote-restart
-   
+
 on property:init.svc.zygote=stopped
     exec u:r:su:s0 root root -- /dev/magisk_iqeoVo2mDrO/magisk --auto-selinux --zygote-restart
     """
@@ -75,11 +75,11 @@ on property:init.svc.zygote=stopped
             os.makedirs(os.path.join(self.copy_dir, "sbin"), exist_ok=True)
 
         Logger.info("Copying magisk libs now ...")
-        
+
         lib_dir = os.path.join(self.extract_to, "lib", self.arch[0])
         for parent, dirnames, filenames in os.walk(lib_dir):
             for filename in filenames:
-                o_path = os.path.join(lib_dir, filename)  
+                o_path = os.path.join(lib_dir, filename)
                 filename = re.search('lib(.*)\.so', filename)
                 n_path = os.path.join(magisk_absolute_dir, filename.group(1))
                 shutil.copyfile(o_path, n_path)
@@ -94,7 +94,7 @@ on property:init.svc.zygote=stopped
         for f in assets_files:
             shutil.copyfile(os.path.join(self.extract_to, "assets", f), os.path.join(magisk_absolute_dir, f))
 
-        # Updating Magisk from Magisk manager will modify bootanim.rc, 
+        # Updating Magisk from Magisk manager will modify bootanim.rc,
         # So it is necessary to backup the original bootanim.rc.
         bootanim_path = os.path.join(self.copy_dir, self.partition, "etc", "init", "bootanim.rc")
         gz_filename = os.path.join(bootanim_path)+".gz"
@@ -122,7 +122,7 @@ on property:init.svc.zygote=stopped
     def extra1(self):
         self.delete_upper()
         self.setup()
-    
+
     # Delete the contents of upperdir
     def delete_upper(self):
         if container.use_overlayfs():
@@ -130,7 +130,7 @@ on property:init.svc.zygote=stopped
             files = [
                 "system/system/etc/init/bootanim.rc",
                 "system/system/etc/init/bootanim.rc.gz",
-                "system/system/etc/init/magisk",               
+                "system/system/etc/init/magisk",
                 "system/system/addon.d/99-magisk.sh",
                 "vendor/etc/selinux/precompiled_sepolicy"
             ]
@@ -141,7 +141,7 @@ on property:init.svc.zygote=stopped
                     shutil.rmtree(file)
                 elif os.path.isfile(file) or os.path.exists(file):
                     os.remove(file)
-    
+
     def extra2(self):
         self.delete_upper()
         data_dir = get_data_dir()

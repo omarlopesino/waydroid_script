@@ -91,7 +91,7 @@ def install_app(args):
         install_list.append(FDroidPriv(args.android_version))
 
     if not container.use_overlayfs():
-        copy_dir = "/tmp/waydroid"
+        copy_dir = "/home/deck/tmp/waydroid"
         container.stop()
 
         resize_system, resize_vendor = False, False
@@ -146,7 +146,7 @@ def remove_app(args):
         remove_list.append(HideStatusBar())
 
     if not container.use_overlayfs():
-        copy_dir = "/tmp/waydroid"
+        copy_dir = "/home/deck/tmp/waydroid"
         container.stop()
 
     for item in remove_list:
@@ -171,7 +171,7 @@ def hack_option(args):
         hack_list.append(HideStatusBar())
 
     if not container.use_overlayfs():
-        copy_dir = "/tmp/waydroid"
+        copy_dir = "/home/deck/tmp/waydroid"
         container.stop()
 
         resize_system, resize_vendor = False, False

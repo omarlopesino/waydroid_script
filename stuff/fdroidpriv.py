@@ -11,7 +11,7 @@ class FDroidPriv(General):
     dl_file_name = "org.fdroid.fdroid.privileged.ota_2130.zip"
     dl_link = ...
     act_md5 = ...
-    extract_to = "/tmp/fdroid_ota_2130"
+    extract_to = "/home/deck/tmp/fdroid_ota_2130"
     files = [
         "app/F-Droid.apk"
         "app/F-Droid/F-Droid.apk"

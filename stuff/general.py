@@ -29,7 +29,7 @@ class General:
         if container.use_overlayfs():
             return "/var/lib/waydroid/overlay"
         else:
-            return "/tmp/waydroid"
+            return "/home/deck/tmp/waydroid"
 
     def download(self):
         Logger.info("Downloading {} now to {} .....".format(

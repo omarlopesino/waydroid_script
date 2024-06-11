@@ -25,7 +25,7 @@ class Gapps(General):
     dl_link = ...
     act_md5 = ...
     dl_file_name = "gapps.zip"
-    extract_to = "/tmp/gapps/extract"
+    extract_to = "/home/deck/tmp/gapps/extract"
     non_apks = [
         "defaultetc-common.tar.lz",
         "defaultframework-common.tar.lz",
